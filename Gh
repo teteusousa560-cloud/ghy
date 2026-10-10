@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Site Moderno</title>
+  <style>
+    /* RESET E VARIÁVEIS DE ESTILO MODERNO */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: #0a0a0f;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* LUZES E GLOW DE FUNDO (BACKGROUND ANIMAÇÃO) */
+    .glow-1, .glow-2 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+      animation: floatGlow 8s ease-in-out infinite alternate;
+    }
+
+    .glow-1 {
+      width: 250px;
+      height: 250px;
+      background: rgba(0, 230, 118, 0.35);
+      top: 10%;
+      left: 10%;
+    }
+
+    .glow-2 {
+      width: 250px;
+      height: 250px;
+      background: rgba(124, 77, 255, 0.35);
+      bottom: 10%;
+      right: 10%;
+      animation-delay: -4s;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 50px) scale(1.2); }
+    }
+
+    /* CARTÃO EFEITO VIDRO (GLASSMORPHISM) */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 40px 25px;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* AVATAR / ÍCONE COM GLOW */
+    .profile-icon {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00e676, #7c4dff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      box-shadow: 0 0 25px rgba(0, 230, 118, 0.4);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(0, 230, 118, 0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(124, 77, 255, 0.6); }
+    }
+
+    /* TÍTULOS E EFEITOS DE TEXTO */
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #ffffff, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+
+    /* BOTÕES INTERATIVOS E ANIMADOS */
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .btn {
+      position: relative;
+      padding: 14px 20px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* EFEITO AO CLICAR OU PASSAR O DEDO */
+    .btn:active, .btn:hover {
+      background: linear-gradient(135deg, rgba(0, 230, 118, 0.2), rgba(124, 77, 255, 0.2));
+      border-color: #00e676;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 230, 118, 0.25);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00e676, #00b0ff);
+      color: #000000;
+      border: none;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 230, 118, 0.3);
+    }
+
+    .btn-primary:active, .btn-primary:hover {
+      background: linear-gradient(135deg, #00c853, #0091ea);
+      box-shadow: 0 8px 25px rgba(0, 230, 118, 0.5);
+    }
+
+    /* BADGE DE SEGURANÇA NO RODAPÉ */
+    .security-badge {
+      margin-top: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: #64748b;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00e676;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LUZES DE FUNDO ANIMADAS -->
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+
+  <!-- CARTÃO PRINCIPAL (GLASS) -->
+  <div class="card">
+    <div class="profile-icon">🚀</div>
+    <h1>Seu Nome / Projeto</h1>
+    <p class="subtitle">Bem-vindo ao meu espaço oficial na web.</p>
+
+    <!-- LISTA DE BOTÕES / LINKS -->
+    <div class="btn-container">
+      <a href="https://youtube.com" class="btn btn-primary" target="_blank">
+        <span>🎬</span> Ver Meus Vídeos
+      </a>
+      <a href="https://roblox.com" class="btn" target="_blank">
+        <span>🎮</span> Meu Perfil do Roblox
+      </a>
+      <a href="https://discord.com" class="btn" target="_blank">
+        <span>💬</span> Entrar no Discord
+      </a>
+    </div>
+
+    <!-- CERTIFICADO DE SEGURANÇA E SEM ANÚNCIOS -->
+    <div class="security-badge">
+      <span class="dot"></span>
+      <span>100% Seguro • Sem Anúncios • HTTPS Protegido</span>
+    </div>
+  </div>
+
+</body>
+</html>
